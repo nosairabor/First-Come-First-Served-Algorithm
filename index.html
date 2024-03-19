@@ -59,7 +59,7 @@
             sortedProcesses.sort((a, b) => a[0] - b[0]);
 
             // Create HTML for displaying sorted processes
-            let sortedProcessesHTML = `<div class="process-div"><p class="process">The processes are executed in the order: </p><ul>`;
+            let sortedProcessesHTML = `<div class="process-div"><p class="process">The processes are executed in the order of their arrival times: </p><ul>`;
             sortedProcesses.forEach(process => {
                 sortedProcessesHTML += `<li><strong>P${process[3]}</strong> - <strong>Arrival Time:</strong> ${process[0]} seconds, <strong>Burst Time:</strong> ${process[1]} seconds, <strong>Waiting Time:</strong> ${process[2]} seconds</li>`;
             });
