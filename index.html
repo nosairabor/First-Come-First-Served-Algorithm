@@ -11,7 +11,7 @@
         <p><strong>Name:</strong> Irabor Nosa Gideon</p>
         <p><strong> Number: </strong>180805507</p>
         <p><strong>CSC 510</strong> </p>
-        <p class="description">Implementation of <strong>First Come First Served (FCFS) Algorithm</strong> by calculating the waiting time for each process. It generates random arrival and burst times numbers according to the number of processes specified.</p>
+        <p class="description">Implementation of <strong>First Come First Served (FCFS) Scheduling Algorithm</strong> by calculating the waiting time for each process. It generates random arrival and burst times numbers according to the number of processes specified.</p>
         
     </div>
     <div id="outputTable"></div>
@@ -37,6 +37,7 @@
 
             // Calculate average waiting time
             let average = sum / n;
+            average = average.toFixed(1); //to 1 decimal place
 
             // Create an HTML table to display the output
             let table = `<table border='1'><tr style="background-color: pink"><th>Process</th><th>Arrival Time (secs)</th><th>Burst Time (secs)</th><th>Waiting Time (secs)</th></tr>`;
