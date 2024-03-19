@@ -38,6 +38,9 @@ tr, td, th{
 ul{
     margin-top: -10px;
 }
+li{
+    padding-top: 8px;
+}
 
 
 @media only screen and (max-width: 480px) {
