@@ -16,6 +16,7 @@
         
     </div>
     <div id="outputTable"></div>
+    <div id="sortedProcesses"></div>
     <script>
         function getRandomInt(min, max) {
             return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -53,7 +54,23 @@
 
             // Set the innerHTML of the outputTable div to display the table
             document.getElementById("outputTable").innerHTML = table;
+
+            let sortedProcesses = at.map((value, index) => [value, bt[index], wt[index], index + 1]);
+            sortedProcesses.sort((a, b) => a[0] - b[0]);
+
+            // Create HTML for displaying sorted processes
+            let sortedProcessesHTML = `<div class="process-div"><p class="process">The processes are executed in the order: </p><ul>`;
+            sortedProcesses.forEach(process => {
+                sortedProcessesHTML += `<li><strong>P${process[3]}</strong> - Arrival Time: ${process[0]} seconds, Burst Time: ${process[1]} seconds, Waiting Time: ${process[2]} seconds</li>`;
+            });
+            sortedProcessesHTML += "</ul></div>";
+
+            // Set the innerHTML of the sortedProcesses div to display the sorted processes
+            document.getElementById("sortedProcesses").innerHTML = sortedProcessesHTML;
         }
+
+        
+
 
         // Function to prompt the user for the number of processes
         function promptUserForNumberOfProcesses() {

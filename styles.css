@@ -10,6 +10,10 @@
 }
 .description{
     text-align: center;
+    max-width: 800px;
+}
+table{
+    margin-top: -30px;
 }
 #outputTable{
     display: flex;
@@ -20,9 +24,31 @@ tr, td, th{
     text-align: center;
     padding: 20px;
 }
+.process-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+.process{
+    font-weight: bold;
+    font-size: 20px;
+    
+}
+ul{
+    margin-top: -10px;
+}
 
 
 @media only screen and (max-width: 480px) {
-   
+   .description{
+    max-width: 350px;
+   }
+   .process{
+    font-size: 18px;
+   }
+   ul{
+    font-size: 15px;
+   }
     
 }
