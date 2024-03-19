@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles.css">
+<title>FCFS Algorithm</title>
+</head>
+<body>
+<div class="bio">
+    <p><strong>Name:</strong> Irabor Nosa Gideon</p>
+    <p><strong> Number: </strong>180805507</p>
+    <p><strong>CSC 510</strong> </p>
+    <p class="description">Implementation of <strong>First Come First Served (FCFS) Algorithm</strong> by calculating the waiting time for each process. It generates random arrival and burst times numbers according to the number of processes specified</p>
+    
+</div>
+<div id="outputTable"></div>
+<script>
+    function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    // Function to calculate waiting time and average waiting time
+    function calculateWaitingTime(at, bt, n) {
+        // Declare the array for waiting time
+        let wt = new Array(n);
+
+        // Waiting time for first process is 0
+        wt[0] = 0;
+
+        // Calculate waiting time for each process from the given formula
+        for (let i = 1; i < n; i++) {
+            wt[i] = Math.max(0, at[i - 1] + bt[i - 1] + wt[i - 1] - at[i]);
+        }
+
+        // Calculate sum of waiting times
+        let sum = wt.reduce((acc, curr) => acc + curr, 0);
+
+        // Calculate average waiting time
+        let average = sum / n;
+
+        // Create an HTML table to display the output
+        let table = `<table border='1'><tr style="background-color: pink"><th>Process</th><th>Arrival Time (secs)</th><th>Burst Time (secs)</th><th>Waiting Time (secs)</th></tr>`;
+
+        // Append rows for each process to the table
+        for (let i = 0; i < n; i++) {
+            table += `<tr><td>P${i + 1}</td><td>${at[i]}</td><td>${bt[i]}</td><td>${wt[i]}</td></tr>`;
+        }
+
+        // Append row for average waiting time to the table
+        table += `<tr><td colspan='3'>Average Waiting Time (secs)</td><td>${average}</td></tr></table>`;
+
+        // Set the innerHTML of the outputTable div to display the table
+        document.getElementById("outputTable").innerHTML = table;
+    }
+
+    // Function to prompt the user for the number of processes
+    function promptUserForNumberOfProcesses() {
+        let n = prompt("Enter the number of processes:");
+        return parseInt(n);
+    }
+
+    // Driver code
+    function main() {
+        // Prompt the user for the number of processes
+        let n = promptUserForNumberOfProcesses();
+
+        // Array for arrival time
+        let at = [];
+        // Array for burst time
+        let bt = [];
+
+        // generate random arrival time and burst time for each process
+        for (let i = 0; i < n; i++) {
+            let arrivalTime = getRandomInt(1, 50);
+            at.push(arrivalTime);
+            let burstTime = getRandomInt(1, 50);
+            bt.push(burstTime);
+        }
+
+        // Function call to find waiting time
+        calculateWaitingTime(at, bt, n);
+    }
+
+    // Call the main function
+    main();
+</script>
+</body>
+</html>
